@@ -1,40 +1,22 @@
 import React, { Component } from "react";
-import Booklist from "./Booklist";
-import classicBooks from "../data";
-import { getBooksOnPage } from "../helpers";
-import Pagination from "./Pagination";
+import BookOverview from "./BookOverview";
+import Navbar from "./Navbar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import About from "./About";
 
 class App extends Component {
-  state = {
-    books: classicBooks,
-    currentPage: 1,
-    pageSize: 8,
-  };
-
-  makeActive = (e) => {
-    const clicked = e.target.parentNode.id;
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        currentPage: parseInt(clicked),
-      };
-    });
-  };
-
   render() {
-    const { books: allBooks, pageSize, currentPage } = this.state;
-    const books = getBooksOnPage(allBooks, pageSize, currentPage);
-
     return (
-      <main className="container py-4">
-        <Booklist books={books} />
-        <Pagination
-          count={allBooks.length}
-          pageSize={pageSize}
-          currentPage={currentPage}
-          makeActive={this.makeActive}
-        />
-      </main>
+      <>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<BookOverview />} />
+            <Route path="/books" element={<BookOverview />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </BrowserRouter>
+      </>
     );
   }
 }
