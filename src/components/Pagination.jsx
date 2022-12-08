@@ -1,5 +1,4 @@
 import _ from "lodash";
-import { useEffect } from "react";
 
 function Pagination({ pageSize, currentPage, count, makeActive }) {
   const pages = _.range(1, count / pageSize + 1);

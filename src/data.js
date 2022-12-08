@@ -119,6 +119,12 @@ const classicBooks = [
     author: "Harper Lee",
     published: 1960,
   },
+  {
+    id: 21,
+    title: "The Haunting Of Hill House",
+    author: "Shirley Jackson",
+    published: 1960,
+  },
 ];
 
 export default classicBooks;
